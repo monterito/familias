@@ -1,0 +1,36 @@
+<body ng-controller="myCtrl">
+
+<h3 class="col-sm-12">Desaparecido</h3>
+
+<form name="frmDesaparecido" novalidate>
+<div class="form-group col-sm-4">
+  <label for="nombres">Nombre:</label>
+  <input type="text" class="form-control" id="nombres" placeholder="Nombre (s)"  ng-model="desaparecido.nombre" required>
+</div>
+<div class="form-group col-sm-4">
+  <label for="primerApellido">Primer apellido:</label>
+  <input type="text" class="form-control" id="primerApellido" placeholder="Primer apellido" ng-model="desaparecido.primerApellido" required>
+</div>
+<div class="form-group col-sm-4">
+  <label for="segundoApellido">Segundo apellido:</label>
+  <input type="text" class="form-control" id="segundoApellido" placeholder="Segundo Apellido" ng-model="desaparecido.segundoApellido" >
+</div>
+
+<div class="col-md-12 file-upload">
+  <label for="imagenDesaparecido">Imagen desaparecido:</label>
+  <input type="file" file-model="myFile" id="imagenDesaparecido"/>
+  <input type="hidden" class="form-control" id="nombreFile" placeholder="Segundo Apellido" ng-model="fileNameRoot" required>
+  <br/>
+  <button class="btn btn-success btn-lg pull-right" ng-disabled="frmDesaparecido.$invalid" ng-click="uploadFile()">Guardar</button>
+</div>
+
+</form>
+
+<!--<div class="panel panel-default">
+  <div class="panel-body">
+    <h3>Imagen Uploaded:</h3>
+    <img ng-src="images/{{filename}}"/>
+  </div>
+</div>-->
+
+</body>

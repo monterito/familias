@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="space-6"></div>
+  <div class="col-sm-offset-9 col-sm-3 ">
+
+
+    <div class="text-right"></div>
+    <br/>Nombre: <span class="text-right">{{name}}</span>
+    <a ng-click="logout();">Logout</a>
+    <br/>
+
+  </div>
+</div>
+
+<div class="breadcrumbs" id="breadcrumbs">
+  <ul class="breadcrumb">
+    <li>
+      <i class="ace-icon fa fa-home home-icon"></i>
+      <a href="#/dashboard">Home</a>
+    </li>
+    <li class="active">Administración desaparecidos</li>
+  </ul>
+</div>
+
+<h1>Administración desaparecidos</h1>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">Desaparecidos</a></li>
+  <li role="presentation"><a href="#">Localizados</a></li>
+</ul>
+
+<br/>
+<div class="row">
+  <div class="col-sm-offset-10 col-sm-2">
+    <a class="btn btn-success" href="#/altaDesaparecido">Agregar desaparecido</a>
+  </div>
+</div>
+<br/>
+<div class="row">
+
+  <table class="table table-bordered">
+    <tr>
+      <th>Nombre</th>
+      <th>Primer Apellido</th>
+      <th>Segundo Apellido</th>
+      <th>Nombre imagen</th>
+      <th>Acciones</th>
+    </tr>
+    <tr ng-repeat="model in data">
+      <td>{{model.nombre}}</td>
+      <td>{{model.primerApellido}}</td>
+      <td>{{model.segundoApellido}}</td>
+      <td>{{model.fileName}}</td>
+      <td>
+        <a class="btn btn-primary">Editar</a>
+        <a class="btn btn-danger">Eliminar</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<br/>
+
