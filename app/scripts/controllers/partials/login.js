@@ -24,7 +24,7 @@ angular.module('siceApp')
     };
     $scope.signup = {email:'',password:'',name:'',phone:'',address:''};
     $scope.signUp = function (customer) {
-        alert("Imprime Algo");
+
         Data.post('signUp', {
             customer: customer
         }).then(function (results) {

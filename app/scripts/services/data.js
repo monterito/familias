@@ -8,15 +8,15 @@
  * Factory in the siceApp.
  */
 angular.module('siceApp')
-  .factory('Data',['$http', 'toaster',
-    function ($http, toaster) { // This service connects to our REST API
+  .factory('Data',['$http',
+    function ($http) { // This service connects to our REST API
 
-        var serviceBase = 'http://localhost:85/SICE/api/v1/index.php/';
+        var serviceBase = 'http://localhost/familias/api/v1/index.php/';
         //var serviceBase = 'api/v1/index.php/';
 
         var obj = {};
         obj.toast = function (data) {
-            toaster.pop(data.status, "", data.message, 10000, 'trustedHtml');
+           // toaster.pop(data.status, "", data.message, 10000, 'trustedHtml');
         }
         obj.get = function (q) {            
             return $http.get(serviceBase + q).then(function (results) {

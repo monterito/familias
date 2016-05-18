@@ -22,21 +22,21 @@ $app->post('/login', function() use ($app) {
     $db = new DbHandler();
     $password = $r->customer->password;
     $email = $r->customer->email;
-    $user = $db->getOneRecord("select uid,name,password,email,created from customers_auth where phone='$email' or email='$email'");
+    $user = $db->getOneRecord("select id_usuario,nombre,password,email from usuario where telefono='$email' or email='$email'");
     if ($user != NULL) {
         if(passwordHash::check_password($user['password'],$password)){
         $response['status'] = "success";
         $response['message'] = 'Logged in successfully.';
-        $response['name'] = $user['name'];
-        $response['uid'] = $user['uid'];
+        $response['name'] = $user['nombre'];
+        $response['uid'] = $user['id_usuario'];
         $response['email'] = $user['email'];
-        $response['createdAt'] = $user['created'];
+
         if (!isset($_SESSION)) {
             session_start();
         }
-        $_SESSION['uid'] = $user['uid'];
+        $_SESSION['uid'] = $user['id_usuario'];
         $_SESSION['email'] = $email;
-        $_SESSION['name'] = $user['name'];
+        $_SESSION['name'] = $user['nombre'];
         } else {
             $response['status'] = "error";
             $response['message'] = 'Login failed. Incorrect credentials';
@@ -50,19 +50,19 @@ $app->post('/login', function() use ($app) {
 $app->post('/signUp', function() use ($app) {
     $response = array();
     $r = json_decode($app->request->getBody());
-    verifyRequiredParams(array('email', 'name', 'password'),$r->customer);
+    verifyRequiredParams(array('email', 'nombre', 'password'),$r->customer);
     require_once 'passwordHash.php';
     $db = new DbHandler();
     $phone = $r->customer->phone;
     $name = $r->customer->name;
     $email = $r->customer->email;
-    $address = $r->customer->address;
     $password = $r->customer->password;
-    $isUserExists = $db->getOneRecord("select 1 from customers_auth where phone='$phone' or email='$email'");
+
+    $isUserExists = $db->getOneRecord("select 1 from usuario where telefono='$phone' or email='$email'");
     if(!$isUserExists){
         $r->customer->password = passwordHash::hash($password);
-        $tabble_name = "customers_auth";
-        $column_names = array('phone', 'name', 'email', 'password', 'city', 'address');
+        $tabble_name = "usuario";
+        $column_names = array('telefono', 'nombre', 'email', 'password');
         $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
         if ($result != NULL) {
             $response["status"] = "success";

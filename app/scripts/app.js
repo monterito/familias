@@ -16,8 +16,7 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'toaster'
+    'ngTouch'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -50,11 +49,11 @@ angular
         controller: 'InicioCtrl'
       })
       .when('/adminDesaparecidos', {
-        templateUrl: 'views//admin/admindesaparecidos.html',
+        templateUrl: 'views/admin/admindesaparecidos.html',
         controller: 'AdminAdmindesaparecidosCtrl'
       })
       .when('/altaDesaparecido', {
-        templateUrl: 'views//admin/altadesaparecido.html',
+        templateUrl: 'views/admin/altadesaparecido.html',
         controller: 'AdminAltadesaparecidoCtrl'
       })
       .otherwise({
