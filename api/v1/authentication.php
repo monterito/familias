@@ -22,7 +22,7 @@ $app->post('/login', function() use ($app) {
     $db = new DbHandler();
     $password = $r->customer->password;
     $email = $r->customer->email;
-    $user = $db->getOneRecord("select id_usuario,nombre,password,email from usuario where telefono='$email' or email='$email'");
+    $user = $db->getOneRecord("select id_usuario,nombre,password,email from usuario where email='$email'");
     if ($user != NULL) {
         if(passwordHash::check_password($user['password'],$password)){
         $response['status'] = "success";
@@ -53,16 +53,15 @@ $app->post('/signUp', function() use ($app) {
     verifyRequiredParams(array('email', 'nombre', 'password'),$r->customer);
     require_once 'passwordHash.php';
     $db = new DbHandler();
-    $phone = $r->customer->phone;
     $name = $r->customer->name;
     $email = $r->customer->email;
     $password = $r->customer->password;
 
-    $isUserExists = $db->getOneRecord("select 1 from usuario where telefono='$phone' or email='$email'");
+    $isUserExists = $db->getOneRecord("select 1 from usuario where email='$email'");
     if(!$isUserExists){
         $r->customer->password = passwordHash::hash($password);
         $tabble_name = "usuario";
-        $column_names = array('telefono', 'nombre', 'email', 'password');
+        $column_names = array( 'nombre', 'email', 'password');
         $result = $db->insertIntoTable($r->customer, $column_names, $tabble_name);
         if ($result != NULL) {
             $response["status"] = "success";

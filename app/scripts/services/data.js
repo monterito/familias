@@ -11,14 +11,14 @@ angular.module('siceApp')
   .factory('Data',['$http',
     function ($http) { // This service connects to our REST API
 
-        var serviceBase = 'http://localhost/familias/api/v1/index.php/';
+        var serviceBase = '../api/v1/index.php/';
         //var serviceBase = 'api/v1/index.php/';
 
         var obj = {};
         obj.toast = function (data) {
            // toaster.pop(data.status, "", data.message, 10000, 'trustedHtml');
         }
-        obj.get = function (q) {            
+        obj.get = function (q) {
             return $http.get(serviceBase + q).then(function (results) {
                 return results.data;
             });
