@@ -21,23 +21,20 @@
   </ul>
 </div>
 
-<h1>Administración desaparecidos</h1>
+<h1>Administración Localizados</h1>
 
 <ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="#">Desaparecidos</a></li>
-  <li role="presentation"><a href="#/localizados">Localizados</a></li>
+  <li role="presentation"><a href="#/adminDesaparecidos">Desaparecidos</a></li>
+  <li role="presentation" class="active"><a href="#/localizados">Localizados</a></li>
 </ul>
 
 <br/>
+
 <div class="row">
-  <div class="col-sm-offset-10 col-sm-2">
-    <a class="btn btn-success" href="#/altaDesaparecido">Agregar desaparecido</a>
-  </div>
-</div>
-<br/>
-<div class="row">
+
   <label for="filtro" title="Filtrar">Filtar:</label>
   <input class="form-control" id="filtro" type="text" ng-model="filtro" placeholder="busca cualquier por cualquier campo ...">
+
   <br/>
   <table class="table table-bordered">
     <tr>
@@ -47,13 +44,12 @@
       <th>Nombre imagen</th>
       <th>Acciones</th>
     </tr>
-    <tr ng-repeat="model in data | filter : filtro">
+    <tr ng-repeat="model in data | filter:filtro">
       <td>{{model.nombre}}</td>
       <td>{{model.primerApellido}}</td>
       <td>{{model.segundoApellido}}</td>
       <td>{{model.fileName}}</td>
       <td>
-        <a class="btn btn-primary" ng-click="editarDesaparecido(model)">Editar</a>
         <a class="btn btn-danger">Eliminar</a>
       </td>
     </tr>

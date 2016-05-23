@@ -17,7 +17,7 @@ angular.module('siceApp')
       console.dir(file);
       console.log($scope.desaparecido);
 
-      var uploadUrl = "../api/v1/save_form.php";
+      var uploadUrl = "api/v1/save_form.php";
       $scope.filename='undefined.jpg';
       fileUpload.uploadFileToUrl(file, uploadUrl, $scope.desaparecido,$scope);
     };
@@ -52,7 +52,7 @@ angular.module('siceApp')
         .success(function(){
           $scope.filename = file.name;
           console.log("Success");
-          $location.path("/adminDesaparecidos");
+         // $location.path("/adminDesaparecidos");
 
           bootbox.alert("Se ha guardado correctamente", function() {
           });

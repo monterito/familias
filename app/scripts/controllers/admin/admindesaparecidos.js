@@ -11,11 +11,12 @@ angular.module('siceApp')
   .controller('AdminAdmindesaparecidosCtrl',['$scope','$http', function($scope,$http){
 
     $scope.init=function(){
-      var serviceBase = '../api/v1/index.php/';
-      $http.get(serviceBase + "desaparecidos").success(function(data,message){
+      var serviceBase = 'api/v1/index.php/';
+      $http.get(serviceBase + "desaparecidos/1").success(function(data,message){
         $scope.data = data.data;
       }).error(function(data, status, header, config){
-        alert("No se pudo registrar correctamente" +"\n" + data +"\n" + status +"\n" + header +"\n" + config);
+
+        console.log("No se pudo registrar correctamente" +" " + data +" " + status +" " + header +"" + config);
       });
 
     };
@@ -27,9 +28,17 @@ angular.module('siceApp')
       };
 
       $scope.actualizarALocalizado = function(){
-          $scope.desaparecido;
-          alert("Se ha actualizado el desaparecido ha localizado " + $scope.desaparecido.nombre);
-          $('#modalEditDesaparecido').modal('hide');
-      }
 
+        $http.post("api/v1/index.php/" + "actualizarDesaparecido" ,$scope.desaparecido).success(function(data){
+          alert("Se ha actualizado el desaparecido ha localizado " + data.nombre);
+          $('#modalEditDesaparecido').modal('hide');
+          $scope.init();
+
+        }).error(function(data, status, header, config){
+          alert("No se pudo registrar correctamente" +" " + data +" " + status +" " + header +"" + config);
+        });
+
+
+
+      };
   }]);

@@ -11,7 +11,7 @@ angular.module('siceApp')
   .factory('Data',['$http',
     function ($http) { // This service connects to our REST API
 
-        var serviceBase = '../api/v1/index.php/';
+        var serviceBase = 'api/v1/index.php/';
         //var serviceBase = 'api/v1/index.php/';
 
         var obj = {};

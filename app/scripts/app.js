@@ -56,6 +56,10 @@ angular
         templateUrl: 'views/admin/altadesaparecido.html',
         controller: 'AdminAltadesaparecidoCtrl'
       })
+      .when('/localizados', {
+        templateUrl: 'views/localizados.html',
+        controller: 'LocalizadosCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
